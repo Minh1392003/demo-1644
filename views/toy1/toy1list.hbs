@@ -1,0 +1,51 @@
+<div class="container text-center mt-3 mb-3">
+   <table class="table">
+      <thead class="thead-dark">
+         <tr>
+            <th colspan="7">
+               <h1 class="text text-primary">TOY CAR LIST</h1>
+            </th>
+            <form action="/search" method="post">
+                <input type="search" class="form-control rounded" name="keyword" placeholder="Enter name to search"
+                    aria-label="Search" aria-describedby="search-addon" required />
+                <button type="button" class="btn btn-outline-dark">search</button>
+            </form>
+            <th>
+               <a class="btn btn-primary" href="/toy1/add">Add</a>
+            </th>
+         </tr>
+         <select class="form-select" name="form-control" onchange="window.location.href=this.value">
+            <option selected>Sort</option>
+            <option value="/sort/price/asc">Sort by Price Ascending</option>
+            <option value="/sort/price/asc">Sort by Price Descending</option>
+         </select>
+         <tr>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>NSX</th>
+            <th>Quanlity</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Menu</th>
+         </tr>
+         {{#each Toys1 }}
+         <tr>
+            <td>{{ name }}</td>
+            <td>{{ brandname }}</td>
+            <td>{{ dateFormat dob "DD-MM-YYYY"}}</td>
+            <td>{{ quanlity }}</td>
+            <td>{{ price }}</td>
+            <td>
+               <img src="{{ image }}" width="100" height="100">
+            </td>
+            <td>{{des}}</td>
+            <td>
+               <a class="btn btn-warning" href="/toy1/edit/{{ _id }}">Edit</a>
+               <a class="btn btn-danger" href="/toy1/delete/{{ _id }}"
+                  onclick="return confirm('Are you sure to delete this toy ?');">Delete</a>
+            </td>
+         </tr>
+         {{/each}}
+   </table>
+</div>
